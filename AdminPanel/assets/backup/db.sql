@@ -1,29 +1,34 @@
--- MariaDB dump 10.19  Distrib 10.6.12-MariaDB, for debian-linux-gnu (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 5.1.1deb5ubuntu1
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: rocket_ssh
--- ------------------------------------------------------
--- Server version	10.6.12-MariaDB-0ubuntu0.22.04.1
+-- Host: localhost:3306
+-- Generation Time: Aug 21, 2023 at 01:33 AM
+-- Server version: 10.6.12-MariaDB-0ubuntu0.22.04.1
+-- PHP Version: 8.1.22
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Database: `rocket_ssh`
+--
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `cp_admins`
 --
 
-DROP TABLE IF EXISTS `cp_admins`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cp_admins` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `fullname` varchar(255) NOT NULL,
@@ -31,112 +36,85 @@ CREATE TABLE `cp_admins` (
   `credit` float NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `ctime` int(11) NOT NULL,
-  `utime` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `utime` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 --
 -- Dumping data for table `cp_admins`
 --
 
-LOCK TABLES `cp_admins` WRITE;
-/*!40000 ALTER TABLE `cp_admins` DISABLE KEYS */;
-INSERT INTO `cp_admins` VALUES (1,'admin','$2y$10$ZiEM0Flg8aEcAwv5Cb5v3.fhReAk8L1knxn5uKE0VsIdghIYKSZqO','مدیر پنل','admin',0,1,1691287888,1691525834);
-/*!40000 ALTER TABLE `cp_admins` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `cp_admins` (`id`, `username`, `password`, `fullname`, `role`, `credit`, `is_active`, `ctime`, `utime`) VALUES
+(1, 'admin', '$2y$10$ZiEM0Flg8aEcAwv5Cb5v3.fhReAk8L1knxn5uKE0VsIdghIYKSZqO', 'مدیر پنل', 'admin', 0, 1, 1691287888, 1691525834);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `cp_public_apis`
 --
 
-DROP TABLE IF EXISTS `cp_public_apis`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cp_public_apis` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `name` varchar(110) NOT NULL,
   `api_key` varchar(100) NOT NULL,
-  `ctime` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `api_key` (`api_key`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `ctime` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
---
--- Dumping data for table `cp_public_apis`
---
-
-LOCK TABLES `cp_public_apis` WRITE;
-/*!40000 ALTER TABLE `cp_public_apis` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cp_public_apis` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `cp_settings`
 --
 
-DROP TABLE IF EXISTS `cp_settings`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cp_settings` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `name` varchar(512) NOT NULL,
-  `value` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `value` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 --
 -- Dumping data for table `cp_settings`
 --
 
-LOCK TABLES `cp_settings` WRITE;
-/*!40000 ALTER TABLE `cp_settings` DISABLE KEYS */;
-INSERT INTO `cp_settings` VALUES (1,'ssh_port','22'),(2,'udp_port','7304'),(3,'multiuser','1'),(4,'app_version','1'),(5,'connected_text',''),(6,'domain_url','https://s1.github.com'),(7,'fake_url','');
-/*!40000 ALTER TABLE `cp_settings` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `cp_settings` (`id`, `name`, `value`) VALUES
+(1, 'ssh_port', '22'),
+(2, 'udp_port', '7300'),
+(3, 'multiuser', '1'),
+(4, 'app_version', '1.1'),
+(5, 'connected_text', ''),
+(6, 'domain_url', ''),
+(7, 'fake_url', '');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `cp_traffics`
 --
 
-DROP TABLE IF EXISTS `cp_traffics`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cp_traffics` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `download` float NOT NULL,
   `upload` float NOT NULL,
   `total` float NOT NULL,
   `ctime` int(11) NOT NULL,
-  `utime` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `utime` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 --
 -- Dumping data for table `cp_traffics`
 --
 
-LOCK TABLES `cp_traffics` WRITE;
-/*!40000 ALTER TABLE `cp_traffics` DISABLE KEYS */;
-INSERT INTO `cp_traffics` VALUES (1,'test',0,0,0,1692576578,0);
-/*!40000 ALTER TABLE `cp_traffics` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `cp_traffics` (`id`, `username`, `download`, `upload`, `total`, `ctime`, `utime`) VALUES
+(1, 'test', 0, 0, 0, 1692576578, 0);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `cp_users`
 --
 
-DROP TABLE IF EXISTS `cp_users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cp_users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `admin_uname` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -150,30 +128,90 @@ CREATE TABLE `cp_users` (
   `status` varchar(50) NOT NULL,
   `traffic` float NOT NULL,
   `ctime` int(11) NOT NULL,
-  `utime` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`),
-  KEY `admin_uname` (`admin_uname`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `utime` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 --
 -- Dumping data for table `cp_users`
 --
 
-LOCK TABLES `cp_users` WRITE;
-/*!40000 ALTER TABLE `cp_users` DISABLE KEYS */;
-INSERT INTO `cp_users` VALUES (1,'test','admin','123456','','09121234567','',1,1692576578,1698006599,62,'active',102400,1692576578,0);
-/*!40000 ALTER TABLE `cp_users` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `cp_users` (`id`, `username`, `admin_uname`, `password`, `email`, `mobile`, `desc`, `limit_users`, `start_date`, `end_date`, `expiry_days`, `status`, `traffic`, `ctime`, `utime`) VALUES
+(1, 'test', 'admin', '123456', '', '09121234567', '', 1, 1692576578, 1698006599, 62, 'active', 102400, 1692576578, 0);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `cp_admins`
+--
+ALTER TABLE `cp_admins`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Indexes for table `cp_public_apis`
+--
+ALTER TABLE `cp_public_apis`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `api_key` (`api_key`);
+
+--
+-- Indexes for table `cp_settings`
+--
+ALTER TABLE `cp_settings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cp_traffics`
+--
+ALTER TABLE `cp_traffics`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Indexes for table `cp_users`
+--
+ALTER TABLE `cp_users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD KEY `admin_uname` (`admin_uname`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `cp_admins`
+--
+ALTER TABLE `cp_admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `cp_public_apis`
+--
+ALTER TABLE `cp_public_apis`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `cp_settings`
+--
+ALTER TABLE `cp_settings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `cp_traffics`
+--
+ALTER TABLE `cp_traffics`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `cp_users`
+--
+ALTER TABLE `cp_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2023-08-21  4:09:58
