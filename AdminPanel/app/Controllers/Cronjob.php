@@ -20,17 +20,17 @@ class Cronjob extends BaseController
         $this->multiUser($request, $response, $arg);
         $this->expireUsers($request, $response, $arg);
         $this->syncTraffic($request, $response, $arg);
-        //$this->getAppLastVersion($request, $response, $arg);
+        $this->getAppLastVersion($request, $response, $arg);
     }
 
     public function getAppLastVersion()
     {
-        // $lastVersion = githubLastVersion();
-        // if ($lastVersion) {
-        //     $where  = ["name" => "app_last_version"];
-        //     $values = ["name" => "app_last_version", "value" => $lastVersion];
-        //     \App\Models\Settings::updateOrCreate($where, $values);
-        // }
+        $lastVersion = githubLastVersion();
+        if ($lastVersion) {
+            $where  = ["name" => "app_last_version"];
+            $values = ["name" => "app_last_version", "value" => $lastVersion];
+            \App\Models\Settings::updateOrCreate($where, $values);
+        }
     }
 
     public function multiUser($request, $response, $args)
