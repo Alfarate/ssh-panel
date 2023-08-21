@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 21, 2023 at 01:33 AM
+-- Generation Time: Aug 21, 2023 at 01:37 AM
 -- Server version: 10.6.12-MariaDB-0ubuntu0.22.04.1
 -- PHP Version: 8.1.22
 
@@ -100,13 +100,6 @@ CREATE TABLE `cp_traffics` (
   `utime` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
---
--- Dumping data for table `cp_traffics`
---
-
-INSERT INTO `cp_traffics` (`id`, `username`, `download`, `upload`, `total`, `ctime`, `utime`) VALUES
-(1, 'test', 0, 0, 0, 1692576578, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -130,13 +123,6 @@ CREATE TABLE `cp_users` (
   `ctime` int(11) NOT NULL,
   `utime` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
-
---
--- Dumping data for table `cp_users`
---
-
-INSERT INTO `cp_users` (`id`, `username`, `admin_uname`, `password`, `email`, `mobile`, `desc`, `limit_users`, `start_date`, `end_date`, `expiry_days`, `status`, `traffic`, `ctime`, `utime`) VALUES
-(1, 'test', 'admin', '123456', '', '09121234567', '', 1, 1692576578, 1698006599, 62, 'active', 102400, 1692576578, 0);
 
 --
 -- Indexes for dumped tables
@@ -203,13 +189,13 @@ ALTER TABLE `cp_settings`
 -- AUTO_INCREMENT for table `cp_traffics`
 --
 ALTER TABLE `cp_traffics`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cp_users`
 --
 ALTER TABLE `cp_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
