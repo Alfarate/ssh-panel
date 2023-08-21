@@ -18,7 +18,7 @@ class BaseController
         'activeMenu'        => 'dashboard',
         'activeTheme'       => 'light',
         'activePage'        => 'dashboard',
-        'appVersion'        => 1,
+        'appVersion'        => "1.1",
         'showUpNotice'      => false,
         'cacheDate'         => "",
     );
