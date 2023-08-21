@@ -33,13 +33,14 @@ class BaseController
 
         $this->data["cacheDate"] = date("Y-m");
         $appVersion =  \App\Models\Settings::getSetting("app_version");
-        if ($appVersion) {
-            $this->data["appVersion"] = number_format((float)$appVersion, 1, '.', '');
-            $lastVersion =  \App\Models\Settings::getSetting("app_last_version");
-            if ($lastVersion && $lastVersion > $appVersion) {
-                $this->data["showUpNotice"] = true;
-            }
-        }
+
+        // if ($appVersion) {
+        //     $this->data["appVersion"] = number_format((float)$appVersion, 1, '.', '');
+        //     $lastVersion =  \App\Models\Settings::getSetting("app_last_version");
+        //     if ($lastVersion && $lastVersion > $appVersion) {
+        //         $this->data["showUpNotice"] = true;
+        //     }
+        // }
     }
 
 

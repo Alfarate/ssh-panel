@@ -444,6 +444,7 @@ function userStatusLabel($status)
 function githubLastVersion()
 {
     $url = getConfig("versionUrl");
+
     if ($url) {
         $context = stream_context_create(
             array(
