@@ -350,7 +350,7 @@ configDatabase(){
         echo "Data has been dumped from 'RokcetSSH' to '$dbName'."
 
         # Remove the old database
-        mysql -u root -e "DROP DATABASE RokcetSSH;"
+        # mysql -u root -e "DROP DATABASE RokcetSSH;"
         echo "Old database 'RokcetSSH' has been removed."
     else
         echo "Database 'RokcetSSH' does not exist."
