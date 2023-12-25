@@ -36,5 +36,14 @@ wait
 chown www-data:www-data /var/www/html/account/index.php
 wait
 chown www-data:www-data /var/www/html/index.php
-
+wait
+sudo systemctl stop cron
+wait
+rm /tmp/call_url.lock
+wait
+pkill -f /var/www/html/cronjob.sh 
+wait
+sudo systemctl start cron
+wait
+clear
 echo "PHP code updated and .env content restored."

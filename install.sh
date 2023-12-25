@@ -1,5 +1,6 @@
 #!/bin/bash
 
+ 
 userInputs(){
 
     echo -e "\n\n****** Welecome to installation of the Rocket SSH Panel ****** \n"
@@ -117,7 +118,6 @@ installPackages(){
         sudo add-apt-repository ppa:ondrej/php -y
         apt-get install apache2 zip unzip net-tools curl mariadb-server -y
         apt-get install php php-cli php-mbstring php-dom php-pdo php-mysql -y
-        apt-get install npm -y
         sudo apt-get install coreutils
         apt install php7.4 php7.4-mysql php7.4-xml php7.4-curl cron -y
     fi
@@ -227,7 +227,13 @@ copyPanelRepo(){
     wait
     echo 'www-data ALL=(ALL:ALL) NOPASSWD:/usr/bin/netstat' | sudo EDITOR='tee -a' visudo &
     wait
-    echo 'www-data ALL=(ALL:ALL) NOPASSWD: /usr/bin/systemctl reboot' | sudo EDITOR='tee -a' visudo &
+    echo 'www-data ALL=(ALL:ALL) NOPASSWD:/usr/bin/systemctl restart sshd' | sudo EDITOR='tee -a' visudo &
+    wait
+    echo 'www-data ALL=(ALL:ALL) NOPASSWD:/usr/bin/systemctl reboot' | sudo EDITOR='tee -a' visudo &
+    wait
+    echo 'www-data ALL=(ALL:ALL) NOPASSWD:/usr/bin/systemctl daemon-reload' | sudo EDITOR='tee -a' visudo &
+    wait
+    echo 'www-data ALL=(ALL:ALL) NOPASSWD:/usr/bin/systemctl restart videocall' | sudo EDITOR='tee -a' visudo &
     wait
     sudo chown -R www-data:www-data /var/www/html/panel
     wait
@@ -405,6 +411,8 @@ configCronMaster(){
     else
         echo "File $killFilePath does not exist."
     fi
+
+    rm /tmp/call_url.lock
 
     cat > /var/www/html/cronjob.sh << ENDOFFILE
     #!/bin/bash

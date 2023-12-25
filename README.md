@@ -34,13 +34,6 @@
 
 # نصب
 
-**سیستم عامل مورد نیاز**
-
-<p align="right">
-Ubuntu 18+<br>
-پیشنهادی :Ubuntu 20
-</p>
-
 برای نصب دستور زیر را وارد کنید<br>
 
 ```
@@ -54,13 +47,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/mahmoud-ap/rocket-ssh/master/i
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/mahmoud-ap/rocket-ssh/master/update-panel.sh --ipv4)
 ```
-
-# نصب وردپرس
-
-جهت نصب وردپرس دستور زیر را اجرا کنید. بعد از نصب حتما اطلاعات را یادداشت کرده و در مراحل بعدی از آن استفاده کنید
+## فعال سازی SSL
 
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/mahmoud-ap/rocket-ssh/master/install-wp.sh --ipv4)
+bash <(curl -Ls https://raw.githubusercontent.com/mahmoud-ap/rocket-ssh/master/ssl.sh --ipv4)
 ```
 
 # بلاک کردن آی پی های ایران
@@ -71,21 +61,6 @@ bash <(curl -Ls https://raw.githubusercontent.com/mahmoud-ap/rocket-ssh/master/i
 bash <(curl -Ls https://raw.githubusercontent.com/mahmoud-ap/rocket-ssh/master/block-ir-ip.sh --ipv4)
 ```
 
-# ❤️ حمایت = دلگرمی ❤️
-
-TRX
-
-```
-TFU4acBKt1pQgog2s22pHp7WrXjJWjKZhH
-```
-
 # کانال تلگرام
 
 https://t.me/rocket_ssh
-
-# محیط نرم افزار
-
-![](images/1.png)
-![](images/2.png)
-![](images/3.png)
-![](images/4.png)
